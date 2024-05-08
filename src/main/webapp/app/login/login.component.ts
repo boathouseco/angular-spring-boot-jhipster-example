@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import SharedModule from 'app/shared/shared.module';
 import { LoginService } from 'app/login/login.service';
 import { AccountService } from 'app/core/auth/account.service';
+import { BoathouseService } from 'app/core/boathouse/boathouse.service';
 
 @Component({
   standalone: true,
@@ -26,6 +27,7 @@ export default class LoginComponent implements OnInit, AfterViewInit {
 
   private accountService = inject(AccountService);
   private loginService = inject(LoginService);
+  private boathouseService = inject(BoathouseService);
   private router = inject(Router);
 
   ngOnInit(): void {
@@ -39,6 +41,20 @@ export default class LoginComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.username.nativeElement.focus();
+  }
+
+  loginDummy(): void {
+    this.boathouseService.dummylogin().subscribe({
+      next: () => {
+        this.boathouseService.getBoathouseResponse().subscribe({
+          next: data => {
+            console.log(data);
+            this.router.navigate(['subscription']);
+          },
+        });
+      },
+      error: e => console.error('Error', e),
+    });
   }
 
   login(): void {

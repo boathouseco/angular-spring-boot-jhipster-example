@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="display-4">Subscription Page</h1>
+
+    <p class="lead">
+      This page will show the pricing table if the user does not have an active subscription, otherwise it will redirect to the customer
+      portal.
+    </p>
+
+    <div *ngIf="hasActiveSubscription">
+      <h2>You have an active subscription</h2>
+      <a [href]="boathousePortalUrl">Open the Customer Portal</a>
+    </div>
+
+    <div *ngIf="hasBoathouseHtml && !hasActiveSubscription">
+      <div [innerHTML]="boathouseHtml"></div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ import { errorRoute } from './layouts/error/error.route';
 import HomeComponent from './home/home.component';
 import NavbarComponent from './layouts/navbar/navbar.component';
 import LoginComponent from './login/login.component';
+import SubscriptionComponent from './subscription/subscription.component';
+import ProcessingComponent from './processing/processing.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,16 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     title: 'login.title',
+  },
+  {
+    path: 'subscription',
+    component: SubscriptionComponent,
+    title: 'subscription.title',
+  },
+  {
+    path: 'processing',
+    component: ProcessingComponent,
+    title: 'processing.title',
   },
   {
     path: '',
